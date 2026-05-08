@@ -1,0 +1,8 @@
+title: 💧 doutrina.org
+description: uma plataforma inédita de estudos integrados
+
+repository: sergioSHKLR/doutrina.org
+
+kramdown:
+  parse_block_html: false
+  input: Kramdown
