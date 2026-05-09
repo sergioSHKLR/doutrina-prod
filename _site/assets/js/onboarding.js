@@ -23,7 +23,7 @@ function updateResult() {
 
 area.innerHTML = `
   <h2>Seleções</h2>
-  <p style="font-size: 1.2em; color: darkred;">${profileTitle} utilizando um ${deviceTitle}</p>
+  <p style="font-size: 1.2em; color: red;">${profileTitle} utilizando um ${deviceTitle}</p>
   <hr>
   ${onboardingContent.profiles[profile]}
   ${onboardingContent.devices[device]}

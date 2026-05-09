@@ -22,24 +22,7 @@
     word-spacing: 5px
   }
 
-  .center-button {
-    background-color: grey; /* online - #4ec1f5 */
-    border: none;
-    border-radius: 5px;
-    display: block;
-    font-family: sans-serif;
-    font-size: 18px;
-    padding: 12px 18px;
-    text-align: center;
-    text-decoration: none;
-    width: 100px;
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
-  }
 
-  button > a:any-link {text-decoration: none; color: #000 !important;
-}
 
   @media (orientation:landscape) {
     .note {
@@ -84,11 +67,7 @@
     right: 0
   }
 
-  .center-button {
-    animation: fade-me-in 5s
-  }
-
-  @keyframes fade-me-in {
+   @keyframes fade-me-in {
     100% {
       opacity: 1
     }
@@ -107,13 +86,15 @@
 <body>
   <!-- BRAND 1 -->
   <p style="font-family: 'Russo One'; font-size: 24px; text-align: center; color: currentColor"><span
-      class="emoji">💧</span>&nbsp;doutrina.org  &nbsp;<span style="color: grey"><small><sup>beta</sup></small></span></p>
+      class="emoji">💧</span>&nbsp;doutrina.org  &nbsp;<span style="color: red"><small><sup>PROD</sup></small></span></p>
 
   {{ content }}
 
+  <!--
+
   <button class="center-button"  onclick="window.open('index.html', '_top');return false;" style="color: black;">offline</button> 
 
-   <!-- <a href="https://standwithus.com/brazil" target="_blank"><img id="israel" src="./israel.svg"
+   <a href="https://standwithus.com/brazil" target="_blank"><img id="israel" src="./israel.svg"
       alt="Stand With Us" title="Stand With Us"></a> -->
 
   <script>

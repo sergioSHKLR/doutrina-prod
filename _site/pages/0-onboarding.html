@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bem-vindo</title>
+    <title></title>
     <meta name="description"
      content="Uma plataforma inédita de estudos integrados; permitindo anotações, e a consulta de referências externas, sem sair da janela original.">
     
@@ -82,7 +82,7 @@
         <span class="emoji">💧</span>
         <span class="label2">&nbsp;doutrina.org</span>
             
-            &nbsp;<span style="color: grey"><small><sup>beta</sup></small></span>
+            &nbsp;<span style="color: red"><small><sup>PROD</sup></small></span>
     </a>
 </div>
 
@@ -92,7 +92,7 @@
  <!-- COL1 TOC 
  <p id="toc-title" class="sidebar-heading"><span class="emoji">📄</span> Nesta página</p>
 
- <ul><li class="toc"><a href="#qual--o-seu-perfil">1. Qual é o seu perfil?</a></li><li class="toc"><a href="#qual-seu-dispositivo">2. Qual seu dispositivo?</a><ul><li class="toc">📢 Modo Instrutor</li><li class="toc">🛠️ Modo Voluntário</li><li class="toc">🏛️ Detentor de Direitos / Institucional</li><li class="toc">💻 Laptop</li></ul></li></ul>
+ 
 
  <br> -->
 
@@ -311,7 +311,7 @@
         <span class="emoji">💧</span>
         <span class="label2">&nbsp;doutrina.org</span>
                     
-            &nbsp;<span style="color: grey"><small><sup>beta</sup></small></span>
+            &nbsp;<span style="color: red"><small><sup>PROD</sup></small></span>
     </a>
 
     <button title="Compartilhar" id="col2-sha-btn" class="fr" onclick="webShare()">
@@ -358,160 +358,79 @@
  
 <!-- COL2 BODY -->
 <div id="col2-body">
- <h1 id="bem-vindo">👋🏼 Bem-vindo!</h1>
+ <!-- Trigger Image -->
+<p><img id="myImg" src="../assets/images/desktop-demo.gif" alt="Demonstração responsiva" style="width:100%; max-width:820px; cursor:pointer; border-radius:8px; display:block; margin:20px auto;" /></p>
 
-<h2 id="qual--o-seu-perfil">1. Qual é o seu perfil?</h2>
-
-<div style="display: grid; gap: 14px; margin: 20px 0;">
-  <label><input type="radio" name="profile" value="user" onchange="updateResult()" /> 👤 Leitor</label>
-  <label><input type="radio" name="profile" value="instructor" onchange="updateResult()" /> 📢 Instrutor</label>
-  <label><input type="radio" name="profile" value="volunteer" onchange="updateResult()" /> 🛠️ Voluntário</label>
-  <label><input type="radio" name="profile" value="rights-holder" onchange="updateResult()" /> 🏛️ Detentor de Direitos</label>
+<!-- MODAL FULL SCREEN -->
+<div id="myModal" class="full-modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-content" id="img01" alt="Demo" />
 </div>
 
-<h2 id="qual-seu-dispositivo">2. Qual seu dispositivo?</h2>
+<style>
+.full-modal {
+  display: none;
+  position: fixed !important;
+  z-index: 99999 !important;
+  left: 0;
+  top: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.88) !important;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
 
-<div style="display: grid; gap: 14px; margin: 20px 0;">
-  <label><input type="radio" name="device" value="desktop" onchange="updateResult()" /> 🖥️ Desktop</label>
-  <label><input type="radio" name="device" value="laptop" onchange="updateResult()" /> 💻 Laptop</label>
-  <label><input type="radio" name="device" value="tablet" onchange="updateResult()" /> 📟 Tablet</label>
-  <label><input type="radio" name="device" value="mobile" onchange="updateResult()" /> 📱 Celular</label>
-</div>
+.modal-content {
+  max-width: 96vw;
+  max-height: 94vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
 
-<div id="content-area"></div>
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 100000;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #ff4444;
+}
+</style>
 
 <script>
-  const onboardingContent = {
-    profiles: {
-      user: `<p>Este é o modo mais comum e accessível para leitura.</p>
+const modal = document.getElementById("myModal");
+const modalImg = document.getElementById("img01");
+const trigger = document.getElementById("myImg");
 
-<p><strong>Dicas:</strong></p>
-<ul>
-  <li>Clique nos termos destacados para abrir explicações na coluna ao lado</li>
-  <li>Use a aba de anotações (ícone no canto superior direito) para grifar e anotar</li>
-  <li>Seus ajustes de fonte e modo escuro são salvos automaticamente</li>
-</ul>
+trigger.onclick = function() {
+  modal.style.display = "flex";
+  modalImg.src = this.src;
+};
 
-<p>hierarquia, nomenclatura, convenções de cores e fontes, notas de rodapé</p>`,
-      instructor: `<h3>📢 Modo Instrutor</h3>
-<p>Você está no modo ideal para facilitar estudos em grupo ou centros espíritas.</p>
-<p><strong>Recursos úteis:</strong></p>
-<ul>
-  <li>Use a coluna Complementar para mostrar referências em tempo real</li>
-  <li>Crie um grupo privado no Hypothes.is para anotações coletivas</li>
-  <li>Em telas grandes, todos veem as 4 colunas ao mesmo tempo</li>
-</ul>
-<p><em>Que sua aula seja iluminada!</em></p>`,
-      volunteer: `<h3>🛠️ Modo Voluntário</h3>
-<p>Obrigado por querer contribuir com o projeto!</p>
-<p><strong>Áreas onde precisamos de ajuda:</strong></p>
-<ul>
-  <li>Revisão de código e boas práticas</li>
-  <li>Curadoria e melhoria de links</li>
-  <li>Testes em diferentes dispositivos</li>
-  <li>Tradução e documentação</li>
-</ul>
-<p>Qualquer ajuda é muito bem-vinda. Fique à vontade para abrir Issues ou Pull Requests.</p>`,
-      'rights-holder': `<h3>🏛️ Detentor de Direitos / Institucional</h3>
-<p>Este é um projeto amador, sem fins lucrativos, feito com respeito às obras de Allan Kardec.</p>
-<p>Se você representa uma instituição, editora ou detentor de direitos, estamos abertos ao diálogo.</p>
-<p><strong>Contato:</strong> sergio.shklr@gmail.com</p>`
-    },
-    devices: {
-      desktop: `**🖥️ Desktop (4 colunas)**
+document.querySelector(".close-btn").onclick = function() {
+  modal.style.display = "none";
+};
 
-Você tem a **experiência completa** da plataforma.
+// Clique fora da imagem para fechar
+modal.addEventListener("click", function(e) {
+  if (e.target === modal) modal.style.display = "none";
+});
 
-**O que você vê agora:**
-- Menu lateral (livros, partes, capítulos)
-- Texto principal com links destacados
-- Coluna Complementar (artigos, definições, mapas, vídeos)
-- Coluna de Anotações (Hypothes.is)
-
-**Vantagem:** Tudo visível ao mesmo tempo. Ideal para estudo profundo.`,
-      laptop: `<style>
-    button>img {
-        height: 24px;
-        padding: 7px 0px 7px 0px;
-        margin: 0;
-        vertical-align: middle;
-        border: 1px solid grey;
-        border-radius: 5px;
-        background-color: white;
-    }
-</style>
-<h3>💻 Laptop</h3>
-
-<img src="../assets/images/doutrina-demo.gif" alt="Demonstração da Interface" style="height: 100%;">
-
-<h4>Botões</h4>
-<h5>Menu Lateral</h5>
-<button><img src="../assets/images/menu.svg" alt="Abrir Menu Lateral"></button>
-<button><img src="../assets/images/close.svg" alt="Fechar Menu Lateral"></button> Abrir / Fechar Menu Lateral
-<br>
-<button><img src="../assets/images/typo-menu.svg" alt="Ajustes Tipográficos"></button> Ajustes tipográficos
-(fonte, tamanho, espaçamento, cor de fundo)
-<hr>
-<h5>Barra superior</h5>
-<button><img src="../assets/images/label.svg" alt="Mostrar Etiquetas"></button>
-<button><img src="../assets/images/label-off.svg" alt="Esconder Etiquetas"></button> Alternar visibilidade de
-Etiquetas
-<br>
-<button><img src="../assets/images/dark.svg" alt="Modo Escuro"></button>
-<button><img src="../assets/images/light.svg" alt="Modo Claro"></button> Alternar Modo Escuro / Claro<br>
-<!--
-    <p><button><img src="../assets/images/fullscreen.svg" alt="Tela Cheia"></button>
-        <button><img src="../assets/images/normal-screen.svg" alt="Tela Normal"></button>Alternar Tela Cheia / Normal
-    </p> -->
-<button><img src="../assets/images/back.svg" alt="Voltar Página"></button>Voltar Página (Complementar)<br>
-<button><img src="../assets/images/wiki.svg" alt="Enciclopedia"></button>Enciclopédia<br>
-<button><img src="../assets/images/dicio.svg" alt="Dicionário"></button>Dicionário<br>
-<!--
-        <p><button><img src="../assets/images/share.svg" alt="Compartilhar"></button>Compartilhar</p>
--->
-<hr>
-<h5>Aba de Anotações</h5>
-<button><img src="../assets/images/hypo-sidebar.svg" alt="Alternar Mostrar Barra"></button>Alternar Mostrar Barra<br>
-<button><img src="../assets/images/hilite.svg" alt="Alternar Mostrar Grifos"></button>Alternar Mostrar Grifos<br>
-<button><img src="../assets/images/hypo-note.svg" alt="Nova Nota"></button>Nova Nota<br>
-
-<h4>Dicas para melhor experiência no Laptop:</h4>
-<ul>
-    <li>Use o botão <strong>Aa</strong> para ajustar fonte, tamanho e espaçamento</li>
-    <li>Mantenha a Coluna Complementar aberta enquanto lê</li>
-    <li>Ative o Modo Escuro se preferir (botão na barra superior)</li>
-    <li>Oculte o menu lateral para ganhar mais espaço no texto</li>
-</ul>
-
-<p><strong>Bom estudo!</strong></p>`,
-      tablet: `**📟 Tablet**
-
-**Melhor experiência:** Use no modo deitado (landscape).
-
-**O que você vê agora:**
-- Texto principal
-- Coluna Complementar ao lado
-
-No modo em pé você verá apenas o texto.`,
-      mobile: `**📱 Celular**
-
-**Melhor experiência:** Use no modo deitado.
-
-**O que você vê agora:**
-- Modo em pé: apenas o texto principal
-- Modo deitado: Texto + Coluna Complementar
-
-Gire o celular sempre que possível para acessar os links sem sair da página.`
-    }
-  };
-</script>
-
-<script src="../assets/js/onboarding.js"></script>
-
-<script type="application/json" class="js-hypothesis-config">
-{
-"openSidebar": false
-}
+// ESC key
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") modal.style.display = "none";
+});
 </script>
 
 
