@@ -1,21 +1,33 @@
-<head>
-<meta charset="UTF-8" />
-<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&amp;display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;display=swap" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+  <!-- Google Fonts Import -->
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://googleapis.com" rel="stylesheet">
   <style>
+    /* Insira aqui TODO o bloco <style> que refinamos */
     :root {
       --center-green: #2a5247;
       --border-green: #0d1a15;
       --paper-yellow: #fdf5a2;
       --base-size: 36vmin;
-      --wax-red: #941b1b; 
+      --wax-red: #941b1b;
       color-scheme: light;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    body, html {
+    body,
+    html {
       height: 100vh;
       width: 100vw;
       background: radial-gradient(circle, var(--center-green) 0%, var(--border-green) 100%);
@@ -48,7 +60,7 @@
       width: var(--base-size);
       aspect-ratio: 1 / 1;
       background: var(--paper-yellow);
-      box-shadow: 5px 5px 15px rgba(0,0,0,0.4), 25px 35px 50px rgba(0,0,0,0.6);
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), 25px 35px 50px rgba(0, 0, 0, 0.6);
       transform: rotate(-1.5deg) translateZ(80px);
       background-image: url("https://transparenttextures.com");
       clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);
@@ -62,10 +74,12 @@
     .post-it::after {
       content: "";
       position: absolute;
-      bottom: 0; right: 0;
-      width: 18%; height: 18%;
+      bottom: 0;
+      right: 0;
+      width: 18%;
+      height: 18%;
       background: linear-gradient(135deg, #d4c5a0 50%, transparent 50%);
-      box-shadow: -5px -5px 15px rgba(0,0,0,0.2);
+      box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .note-text {
@@ -82,7 +96,7 @@
       width: var(--base-size);
       aspect-ratio: 8.85 / 10.75;
       background: #fdfdfd;
-      box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
       transform: rotate(4deg) translateZ(20px);
       display: flex;
       flex-direction: column;
@@ -93,18 +107,20 @@
 
     .photo-area {
       width: 90%;
-      aspect-ratio: 1 / 1; 
-      background: #000; /* Inicia em preto para o efeito de revelação */
+      aspect-ratio: 1 / 1;
+      background: #000;
       position: relative;
       overflow: hidden;
-      box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
     }
 
-    /* Efeito de revelação da foto (Fade in from black) */
     .photo-area::after {
       content: "";
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: url("./assets/images/grin.png") center/cover no-repeat;
       opacity: 0;
       animation: photoReveal 2s ease-in forwards 1.5s;
@@ -114,7 +130,7 @@
       margin-top: 40px;
       display: flex;
       align-items: center;
-      gap: 50px; /* Aumentado para botões maiores */
+      gap: 50px;
       opacity: 0;
       animation: fadeIn 1s forwards 4.5s;
       z-index: 100;
@@ -124,11 +140,14 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 5.5rem; /* Aumentado para igualar ao selo */
-      filter: drop-shadow(4px 6px 8px rgba(0,0,0,0.6));
+      font-size: 5.5rem;
+      filter: drop-shadow(4px 6px 8px rgba(0, 0, 0, 0.6));
       transition: transform 0.2s;
     }
-    .btn-help:hover { transform: scale(1.1) rotate(-10deg); }
+
+    .btn-help:hover {
+      transform: scale(1.1) rotate(-10deg);
+    }
 
     .wax-seal-container {
       position: relative;
@@ -139,18 +158,21 @@
       text-decoration: none;
       transition: transform 0.2s;
     }
-    .wax-seal-container:hover { transform: scale(1.1); }
+
+    .wax-seal-container:hover {
+      transform: scale(1.1);
+    }
 
     .wax-seal {
-      font-size: 5.5rem; /* Aumentado levemente */
+      font-size: 5.5rem;
       line-height: 1;
-      filter: drop-shadow(5px 8px 12px rgba(0,0,0,0.7));
+      filter: drop-shadow(5px 8px 12px rgba(0, 0, 0, 0.7));
     }
 
     .wax-text {
       position: absolute;
       font-family: arial;
-      font-size: 1.7rem; /* Aumentado para legibilidade */
+      font-size: 1.7rem;
       color: rgba(0, 0, 0, 0.4);
       text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.2), -0.5px -0.5px 1px rgba(0, 0, 0, 0.4);
       text-transform: lowercase;
@@ -159,57 +181,77 @@
       margin-top: 5px;
     }
 
-    @keyframes fadeIn { to { opacity: 1; } }
-    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
     @keyframes photoReveal {
-      from { opacity: 0; filter: brightness(0); }
-      to { opacity: 1; filter: brightness(1); }
+      from {
+        opacity: 0;
+        filter: brightness(0);
+      }
+
+      to {
+        opacity: 1;
+        filter: brightness(1);
+      }
     }
 
     @media (max-width: 600px) {
-      .scene { flex-direction: column; gap: 5vmin; }
-      :root { --base-size: 60vmin; }
-      .brand { font-size: 2.2rem; margin-bottom: 5px; }
-      .btn-help { font-size: 4rem; }
-      .wax-seal { font-size: 4.5rem; }
+      .scene {
+        flex-direction: column;
+        gap: 5vmin;
+      }
+
+      :root {
+        --base-size: 60vmin;
+      }
+
+      .brand {
+        font-size: 2.2rem;
+        margin-bottom: 5px;
+      }
+
+      .btn-help {
+        font-size: 4rem;
+      }
+
+      .wax-seal {
+        font-size: 4.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
-
   <div class="brand">💧 doutrina.org</div>
-
   <p>&nbsp;</p>
-
   <div class="scene">
     <div class="post-it">
       <div class="note-text">
-        Para que vos outorgou Deus a inteligência e o saber, senão para os repartirdes com os vossos irmãos, senão para fazerdes que se adiantem pela senda que conduz à bem-aventurança, à felicidade eterna?<br /><br />
-        São Agostinho<br />São Luiz
+        <p>Para que vos outorgou Deus a inteligência e o saber, senão para os repartirdes com os vossos irmãos, senão para fazerdes que se adiantem pela senda que conduz à bem-aventurança, à felicidade eterna?
+<br /><br />
+São Agostinho<br />São Luiz</p>
+
       </div>
     </div>
-
-<div class="polaroid-frame">
-  <div class="photo-area"></div>
-  <!-- Legenda inserida na base da moldura -->
-  <p style="font-family: 'Homemade Apple', cursive; font-size: 1.3rem; color: #333; margin-top: 1.5vmin; opacity: 0; animation: fadeIn 2s forwards 1.5s; text-align: center;">
-    Allan Kardec<br />18 de Abril de 1857
-  </p>
+    <div class="polaroid-frame">
+    <div class="photo-area"></div>
+    <p
+        style="font-family: 'Homemade Apple', cursive; font-size: 1.3rem; color: #333; margin-top: 1.5vmin; opacity: 0; animation: fadeIn 2s forwards 1.5s; text-align: center;">
+        Allan Kardec<br>18 de Abril de 1857
+    </p>
 </div>
-
   </div>
-
-<div class="actions">
-  <!-- Bússola -->
-  <button class="btn-help" title="Instruções">🧭</button>
-
-  <!-- Lacre de Entrada -->
-  <a href="1-home.html" class="wax-seal-container">
-    <span class="wax-seal">🔴</span>
-    <span class="wax-text">entrar</span>
-  </a>
+  <div class="actions">
+    <button class="btn-help" title="Instruções">🧭</button>
+    <a href="0-onboarding.html" class="wax-seal-container">
+        <span class="wax-seal">🔴</span>
+        <span class="wax-text">entrar</span>
+    </a>
 </div>
-
-
-
 </body>
+
+</html>
